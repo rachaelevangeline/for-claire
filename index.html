@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Claire! 🎀</title>
+    <style>
+        /* Import Elegant Coquette Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;600&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: url('bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-color: #fdf5f5; /* Soft pink fallback */
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* Ambient soft overlay to ensure text readability */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 245, 245, 0.45);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Header Area */
+        .header-container {
+            text-align: center;
+            margin: 20px 0;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: 'Alex Brush', cursive;
+            font-size: clamp(3.2rem, 8vw, 4.8rem);
+            color: #d4a3a3;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: #b88b8b;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        .bow-accent {
+            font-size: 2rem;
+            color: #e2b2b2;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        /* Layout Container */
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            position: relative;
+            z-index: 2;
+            padding: 20px 0;
+        }
+
+        /* Central Letter Box */
+        .letter-card {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid #f5dede;
+            border-radius: 20px;
+            padding: clamp(25px, 5vw, 40px);
+            width: 100%;
+            max-width: 480px;
+            max-height: 550px;
+            overflow-y: auto;
+            box-shadow: 0 15px 35px rgba(212, 163, 163, 0.25);
+            backdrop-filter: blur(8px);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Custom Scrollbar */
+        .letter-card::-webkit-scrollbar {
+            width: 5px;
+        }
+        .letter-card::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .letter-card::-webkit-scrollbar-thumb {
+            background: #e2b2b2;
+            border-radius: 10px;
+        }
+
+        .letter-card h2 {
+            font-family: 'Playfair Display', serif;
+            color: #a67c7c;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #f2d1d1;
+            padding-bottom: 10px;
+        }
+
+        .letter-text {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.8;
+            color: #5c4a4a;
+            font-size: 1.05rem;
+            text-align: left;
+            white-space: pre-line;
+        }
+
+        /* Polaroid Pictures Wrapper */
+        .photo-gallery {
+            display: contents;
+        }
+
+        /* Base Polaroid Styling */
+        .polaroid {
+            background: white;
+            padding: 12px 12px 24px 12px;
+            box-shadow: 0 8px 20px rgba(166, 124, 124, 0.15);
+            border-radius: 2px;
+            width: 195px;
+            transition: transform 0.3s ease, z-index 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 165px;
+            object-fit: cover;
+            border: 1px solid #fafafa;
+        }
+
+        .polaroid .caption {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.8rem;
+            text-align: center;
+            color: #a67c7c;
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* ================= LAPTOP / DESKTOP STYLES ================= */
+        @media (min-width: 992px) {
+            .polaroid {
+                position: absolute;
+                z-index: 5;
+            }
+            .polaroid:hover {
+                transform: scale(1.1) rotate(0deg) !important;
+                z-index: 20;
+                box-shadow: 0 15px 30px rgba(166, 124, 124, 0.25);
+            }
+            /* Scattered Placement surrounding the center */
+            .pic1 { left: 4%; top: 12%; transform: rotate(-8deg); }
+            .pic2 { left: 7%; bottom: 12%; transform: rotate(6deg); }
+            .pic3 { right: 4%; top: 18%; transform: rotate(5deg); }
+            .pic4 { right: 6%; bottom: 10%; transform: rotate(-6deg); }
+        }
+
+        /* ================= PHONE / TABLET STYLES ================= */
+        @media (max-width: 991px) {
+            body {
+                justify-content: flex-start;
+            }
+            .container {
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 30px;
+            }
+            /* Converts the photos into a cute horizontal swiper on phones */
+            .photo-gallery {
+                display: flex;
+                width: 100vw;
+                overflow-x: auto;
+                padding: 15px 24px;
+                gap: 20px;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+            }
+            .photo-gallery::-webkit-scrollbar {
+                display: none;
+            }
+            .polaroid {
+                scroll-snap-align: center;
+                box-shadow: 0 5px 15px rgba(166, 124, 124, 0.12);
+                width: 180px;
+            }
+            .letter-card {
+                order: -1; /* Keeps the letter on top on mobile */
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header-container">
+        <div class="bow-accent">🎀</div>
+        <h1>Happy Birthday Claire</h1>
+        <div class="subtitle">celebrating you today & always</div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container">
+
+        <!-- Central Custom Letter Box -->
+        <div class="letter-card">
+            <h2>To My Claire 🤍</h2>
+            <div class="letter-text">Dearest Claire,
+
+Happy Birthday to the girl who holds my whole heart. 
+
+Today is all about celebrating the incredible, beautiful, and deeply kind person that you are. Over the last [How many years/months], you’ve become my favorite part of every single day, my absolute safe haven, and my best friend. 
+
+I love the way your eyes light up when you laugh, the quiet and gentle moments we share when the world slows down, and just how effortless it feels to love you. You bring an irreplaceable warmth and light into my life that I never want to be without.
+
+Thank you for just being you—for your soft heart, your endless patience, and for making my world infinitely brighter. 
+
+As you start this new year of life, my biggest wish is that it brings you all the magic, peace, and absolute happiness you constantly give to everyone around you. I promise to be right here by your side through all of it, cheering you on and loving you a little more every day.
+
+Have the most wonderful birthday, my sweet girl. You deserve the entire world.
+
+Forever & always yours,
+[Your Name] ✨</div>
+        </div>
+
+        <!-- Scattered on Laptop / Swipeable Gallery on Mobile -->
+        <div class="photo-gallery">
+            <div class="polaroid pic1">
+                <img src="pic1.png" alt="Claire Photo 1">
+                <div class="caption">my favorite smile</div>
+            </div>
+
+            <div class="polaroid pic2">
+                <img src="pic2.png" alt="Claire Photo 2">
+                <div class="caption">cherished moments</div>
+            </div>
+
+            <div class="polaroid pic3">
+                <img src="pic3.png" alt="Claire Photo 3">
+                <div class="caption">sweetest memories</div>
+            </div>
+
+            <div class="polaroid pic4">
+                <img src="pic4.png" alt="Claire Photo 4">
+                <div class="caption">always you</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
