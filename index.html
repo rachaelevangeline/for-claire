@@ -25,7 +25,7 @@
             align-items: center;
             overflow-x: hidden;
             position: relative;
-            padding: 20px;
+            padding: 15px;
         }
 
         /* Ambient soft overlay to ensure text readability */
@@ -44,13 +44,13 @@
         /* Header Area */
         .header-container {
             text-align: center;
-            margin: 20px 0;
+            margin: 15px 0;
             z-index: 2;
         }
 
         h1 {
             font-family: 'Alex Brush', cursive;
-            font-size: clamp(3.2rem, 8vw, 4.8rem);
+            font-size: clamp(2.8rem, 8vw, 4.8rem);
             color: #d4a3a3;
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
             line-height: 1.2;
@@ -59,14 +59,14 @@
         .subtitle {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-size: clamp(0.9rem, 3vw, 1.3rem);
             color: #b88b8b;
             letter-spacing: 2px;
             margin-top: 5px;
         }
 
         .bow-accent {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: #e2b2b2;
             animation: float 3s ease-in-out infinite;
             display: inline-block;
@@ -82,7 +82,7 @@
             flex-grow: 1;
             position: relative;
             z-index: 2;
-            padding: 20px 0;
+            padding: 10px 0;
         }
 
         /* Central Letter Box */
@@ -90,10 +90,10 @@
             background: rgba(255, 255, 255, 0.94);
             border: 1px solid #f5dede;
             border-radius: 20px;
-            padding: clamp(25px, 5vw, 40px);
+            padding: clamp(20px, 5vw, 40px);
             width: 100%;
-            max-width: 480px;
-            max-height: 550px;
+            max-width: 450px;
+            max-height: 500px;
             overflow-y: auto;
             box-shadow: 0 15px 35px rgba(212, 163, 163, 0.25);
             backdrop-filter: blur(8px);
@@ -117,8 +117,8 @@
         .letter-card h2 {
             font-family: 'Playfair Display', serif;
             color: #a67c7c;
-            font-size: 1.6rem;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
             border-bottom: 1px dashed #f2d1d1;
             padding-bottom: 10px;
         }
@@ -127,41 +127,47 @@
             font-family: 'Playfair Display', serif;
             line-height: 1.8;
             color: #5c4a4a;
-            font-size: 1.05rem;
+            font-size: 1rem;
             text-align: left;
             white-space: pre-line;
         }
 
         /* Polaroid Pictures Wrapper */
         .photo-gallery {
-            display: contents;
+            display: contents; /* Allows absolute tracking on all devices */
         }
 
-        /* Base Polaroid Styling */
+        /* Base Polaroid Styling (Clean & Transparent) */
         .polaroid {
-            background: white;
-            padding: 12px 12px 24px 12px;
-            box-shadow: 0 8px 20px rgba(166, 124, 124, 0.15);
-            border-radius: 2px;
-            width: 195px;
+            background: transparent;
+            padding: 0;
+            position: absolute;
             transition: transform 0.3s ease, z-index 0.3s ease;
-            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: auto;
         }
 
         .polaroid img {
             width: 100%;
-            height: 165px;
             object-fit: cover;
-            border: 1px solid #fafafa;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(166, 124, 124, 0.2);
         }
 
         .polaroid .caption {
             font-family: 'Alex Brush', cursive;
-            font-size: 1.8rem;
             text-align: center;
-            color: #a67c7c;
-            margin-top: 10px;
+            color: #b88b8b;
+            margin-top: 5px;
             white-space: nowrap;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .polaroid:hover {
+            transform: scale(1.15) rotate(0deg) !important;
+            z-index: 25;
         }
 
         @keyframes float {
@@ -173,53 +179,45 @@
         /* ================= LAPTOP / DESKTOP STYLES ================= */
         @media (min-width: 992px) {
             .polaroid {
-                position: absolute;
+                width: 135px;
                 z-index: 5;
             }
-            .polaroid:hover {
-                transform: scale(1.1) rotate(0deg) !important;
-                z-index: 20;
-                box-shadow: 0 15px 30px rgba(166, 124, 124, 0.25);
+            .polaroid img {
+                height: 145px;
             }
-            /* Scattered Placement surrounding the center */
-            .pic1 { left: 4%; top: 12%; transform: rotate(-8deg); }
-            .pic2 { left: 7%; bottom: 12%; transform: rotate(6deg); }
-            .pic3 { right: 4%; top: 18%; transform: rotate(5deg); }
-            .pic4 { right: 6%; bottom: 10%; transform: rotate(-6deg); }
+            .polaroid .caption {
+                font-size: 1.6rem;
+            }
+            /* Scattered layout around the large screen */
+            .pic1 { left: 8%; top: 15%; transform: rotate(-8deg); }
+            .pic2 { left: 11%; bottom: 15%; transform: rotate(6deg); }
+            .pic3 { right: 8%; top: 20%; transform: rotate(5deg); }
+            .pic4 { right: 10%; bottom: 12%; transform: rotate(-6deg); }
         }
 
         /* ================= PHONE / TABLET STYLES ================= */
         @media (max-width: 991px) {
-            body {
-                justify-content: flex-start;
-            }
             .container {
-                flex-direction: column;
-                justify-content: flex-start;
-                gap: 30px;
+                min-height: 70vh;
+                padding: 10px 0;
             }
-            /* Converts the photos into a cute horizontal swiper on phones */
-            .photo-gallery {
-                display: flex;
-                width: 100vw;
-                overflow-x: auto;
-                padding: 15px 24px;
-                gap: 20px;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-            }
-            .photo-gallery::-webkit-scrollbar {
-                display: none;
-            }
+            /* Super tiny, dainty scattered frames for mobile view */
             .polaroid {
-                scroll-snap-align: center;
-                box-shadow: 0 5px 15px rgba(166, 124, 124, 0.12);
-                width: 180px;
+                width: 75px; 
+                z-index: 2; /* Sits delicately behind or beside the letter edges */
             }
-            .letter-card {
-                order: -1; /* Keeps the letter on top on mobile */
-                margin-bottom: 10px;
+            .polaroid img {
+                height: 85px;
             }
+            .polaroid .caption {
+                font-size: 1.1rem; /* Keeps caption scaled down perfectly */
+                margin-top: 3px;
+            }
+            /* Strategic corner placements so they don't block the main card text */
+            .pic1 { left: 2%; top: -2%; transform: rotate(-10deg); }
+            .pic2 { left: 4%; bottom: -4%; transform: rotate(8deg); }
+            .pic3 { right: 2%; top: 4%; transform: rotate(6deg); }
+            .pic4 { right: 3%; bottom: -2%; transform: rotate(-8deg); }
         }
     </style>
 </head>
@@ -227,9 +225,9 @@
 
     <!-- Header Section -->
     <div class="header-container">
-        <div class="bow-accent">🎀</div>
+        <div class="bow-accent">🎀 🌸 🎀</div>
         <h1>Happy Birthday Claire</h1>
-        <div class="subtitle">celebrating you today & always</div>
+        <div class="subtitle">celebrating you today & always 🍓</div>
     </div>
 
     <!-- Main Content Area -->
@@ -237,45 +235,47 @@
 
         <!-- Central Custom Letter Box -->
         <div class="letter-card">
-            <h2>To My Claire 🤍</h2>
+            <h2>To My Claire 🤍 🩰</h2>
             <div class="letter-text">Dearest Claire,
 
-Happy Birthday to the girl who holds my whole heart. 
+Happy Birthday to the girl who i became friends unexpectedly. 🌸
 
-Today is all about celebrating the incredible, beautiful, and deeply kind person that you are. Over the last [How many years/months], you’ve become my favorite part of every single day, my absolute safe haven, and my best friend. 
+Today is all about celebrating the incredible, beautiful, and deeply kind person that you are. Over the last few months, you’ve become my favorite part of every single day, my absolute safe haven, and my best friend. 🧸
 
-I love the way your eyes light up when you laugh, the quiet and gentle moments we share when the world slows down, and just how effortless it feels to love you. You bring an irreplaceable warmth and light into my life that I never want to be without.
+I love the way your eyes light up when you smile, the way you tell me to "chill" when life gets heavy, and just how effortless it feels to love you. You bring an irreplaceable warmth and light into my life that I never want to be without. 🩰
 
-Thank you for just being you—for your soft heart, your endless patience, and for making my world infinitely brighter. 
+Thank you for just being you—for your soft heart, your sassiness, your endless patience, your awesome sense of humour and for making my world infinitely brighter. I know things have been really hard and I have hurt you and im sorry. I hope you realise you are so special and deserve the whole world. ✨
 
-As you start this new year of life, my biggest wish is that it brings you all the magic, peace, and absolute happiness you constantly give to everyone around you. I promise to be right here by your side through all of it, cheering you on and loving you a little more every day.
+I'm sorry that the world has been so cruel to you and you have been taken for granted, crying in pain, but god is always there by your side and I'm there for you. 🤍
 
-Have the most wonderful birthday, my sweet girl. You deserve the entire world.
+As you start this new year of life, my biggest wish is that it brings you all the magic, peace, and absolute happiness you constantly give to everyone around you. I promise to be right here by your side through all of it, cheering you on and loving you a little more every day. 🪄
+
+Have the most wonderful birthday, my sweet girl. You deserve the entire world. 🍰
 
 Forever & always yours,
-[Your Name] ✨</div>
+Sugarrr 🎀</div>
         </div>
 
-        <!-- Scattered on Laptop / Swipeable Gallery on Mobile -->
+        <!-- Scattered Layout on both Desktop and Mobile -->
         <div class="photo-gallery">
             <div class="polaroid pic1">
                 <img src="pic1.png" alt="Claire Photo 1">
-                <div class="caption">my favorite smile</div>
+                <div class="caption">my fav girl 🍓</div>
             </div>
 
             <div class="polaroid pic2">
                 <img src="pic2.png" alt="Claire Photo 2">
-                <div class="caption">cherished moments</div>
+                <div class="caption">angel energy 👼</div>
             </div>
 
             <div class="polaroid pic3">
                 <img src="pic3.png" alt="Claire Photo 3">
-                <div class="caption">sweetest memories</div>
+                <div class="caption">so precious 🧸</div>
             </div>
 
             <div class="polaroid pic4">
                 <img src="pic4.png" alt="Claire Photo 4">
-                <div class="caption">always you</div>
+                <div class="caption">lov u loads 🌸</div>
             </div>
         </div>
 
